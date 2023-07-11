@@ -1,15 +1,15 @@
 <template>
-    <p class="prattle text" v-html="filteredPrattle" v-if="textType == 'prattle' && !!content" />
+    <p class="prattle text bold" v-html="filteredPrattle" v-if="textType == 'prattle' && !!content" />
         
     <div class="log" :class="{logHidden: logHidden}" v-else-if="textType == 'log'">
 		<button class="logButton" @click="loggle()">
             {{ logButtonText }}
 		</button>
-		<p class="logContent text" v-html="content.replace(/\|.*?\| *\<br \/\>/, '')"></p>
+		<p class="logContent text bold" v-html="content.replace(/\|.*?\| *\<br \/\>/, '')"></p>
 	</div>
 
     <div class="authorlog" v-else-if="textType == 'authorlog'">
-		<p class="logContent text" v-html="content.replace(/\|.*?\| *\<br ?\/?\>/, '')"></p>
+		<p class="logContent text bold" v-html="content.replace(/\|.*?\| *\<br ?\/?\>/, '')"></p>
 	</div>
 </template>
 
