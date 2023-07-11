@@ -1679,6 +1679,11 @@ tr46@^4.1.1:
   dependencies:
     punycode "^2.3.0"
 
+ts-color-class@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/ts-color-class/-/ts-color-class-0.10.1.tgz#020b4d6dba2bf59f21f77bcb36445be1a30e8aca"
+  integrity sha512-FHqcpjbhHWqTzA81eMW4JvrSQcFrqVo1KhRTMfoR1GAupERAr3T/UT2u1T8ryxQVuZCW/kc4p3mv74mh2pVt+A==
+
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.4.0.tgz#07b8203bfa7056c0657050e3ccd2c37730bab8f1"

@@ -1,11 +1,11 @@
 <template>
   <div v-if="!isLoading">
     <h1>{{ pageData.title }}</h1>
-    <div v-for="(assetSrc, index) in pageData.assets" :key="index">
+    <div v-for="(assetSrc, index) in pageData.assets" :key="index" class="asset-container">
       <object v-if="isSwf" :data="assetSrc" type="application/x-shockwave-flash"></object>
       <img v-else :src="assetSrc" />
     </div>
-    <p v-html="pageData.content"></p>
+    <page-text v-if="pageData.content" :content="pageData.content" :page-id="pageData.pageId"/>
     <div class="command">
       <router-link :to="nextPageLink">{{ nextPageTitle }}</router-link>
     </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+import PageText from '../components/PageText.vue';
 import { computed,  onMounted, onBeforeUnmount, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMspaStore } from '../store/mspaStore';
@@ -94,6 +95,14 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
+.asset-container {
+  // images and objects inside must always be coerced to 650x450
+  img, object, ruffle-object {
+    width: 650px;
+    height: 450px;
+  }
+}
+
 .command {
   font-size: 1.5rem;
 }
