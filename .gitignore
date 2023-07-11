@@ -29,6 +29,6 @@ coverage
 .history
 
 # Avoid pushing this to the repo
-public/assets
+/public/collection
 .env
 .env.production
