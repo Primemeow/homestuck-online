@@ -96,7 +96,7 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .asset-container {
-  // images and objects inside generally must be coerced to 650x450. sometimes this breaks things
+  // images and objects inside must always be coerced to 650x450
   img, object, ruffle-object {
     width: 650px;
     height: 450px;
