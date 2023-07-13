@@ -1,6 +1,6 @@
 # Homestuck Online
 
-A very barebones Homestuck reader, that uses Ruffle to play the original swfs. The first steps in an attempt to basically entirely port [Bambosh's offline unofficial Homestuck collection](https://bambosh.dev/unofficial-homestuck-collection/) to an online version.
+A very barebones Homestuck reader, that uses Ruffle to play the original swfs.
 
 Because this uses code from Bambosh's UHC (namely MSPAThemes), this uses GPLv3. If/when that is removed, this will switch to MIT.
 
