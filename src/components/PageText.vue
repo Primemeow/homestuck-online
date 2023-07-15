@@ -15,27 +15,12 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
+import { FULL_WIDTH_IMAGES } from '../constants/image';
 
 const props = defineProps(['pageId', 'content']);
 const logHidden = ref(true);
 const isMounted = ref(false);
-const fullwidthImages = ref([
-    'andthenightbeforechristmas.jpg',
-    'areyounext.gif',
-    'corpsesmooch.gif',
-    'THIS.gif',
-    'IS.gif',
-    'STUPID.gif',
-    'WHOSTHISDOUCHEBAG.gif',
-    'nextbowl.gif',
-    'nextbowl2.gif',
-    'nextbowl3.gif',
-    'nextbowl4.gif',
-    'HELPHIM.gif',
-    'weirdhonk.gif',
-    'OHBOY.gif',
-    'wizordofoz.jpg'
-]);
+const fullwidthImages = ref(FULL_WIDTH_IMAGES);
 
 function getTextType(content) {
     if (!content) return null
