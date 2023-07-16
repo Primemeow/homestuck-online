@@ -38,7 +38,7 @@ function commandText(page) {
 };
 
 function commandLink(page) {
-    return `/${props.story}/${page.next[0]}`;
+    return `/${props.story}/${page.pageId}`;
 }
 
 const pageTimestamp = computed(() => {
