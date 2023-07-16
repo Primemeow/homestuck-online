@@ -3,17 +3,20 @@
         <div class="nextArrow" v-if="nextPages.length > 0">
             <div v-for="(page, index) in nextPages" :key="index">
                 <p v-if="('pageId' in page && 'title' in page)">
-                &gt; <a :href="commandLink(page)" class="nextArrowLink" v-html="commandText(page)"/>
+                &gt;
+                <router-link :to="commandLink(page)" class="nextArrowLink">
+                    <span v-html="commandText(page)"/>
+                </router-link>
                 </p>
             </div>
         </div>
         <div class="footerNav" >
             <ul class="navOptions">
                 <li>
-                    <a :href="props.startOverLink" class="startOver">Start Over</a>
+                    <router-link :to="props.startOverLink" class="startOver">Start Over</router-link>
                 </li>
                 <li v-if="'previous' in thisPage">
-                    <a :href="props.previousPageLink" class="goBack">Go Back</a>
+                    <router-link :to="props.previousPageLink" class="goBack">Go Back</router-link>
                 </li>
             </ul>
             <ul class="meta">
