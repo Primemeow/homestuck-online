@@ -1,22 +1,21 @@
 <template>
   <div v-if="!isLoading" class="pageBody" :class="pageBodyClasses">
-    <div class="mediaContent">
-      <h2 class="pageTitle" v-text="pageData.title" v-if="!isSupercartridge" ref="pageTitle"/>
-      <div class="media" ref="media">
-        <media-embed v-for="url in pageMedia" :key="url" :url="url" class="mediaElement"/>
+    <div class="pageFrame">
+      <div class="pageContent">
+        <div class="mediaContent">
+          <h2 class="pageTitle" v-text="pageData.title" v-if="!isSupercartridge" ref="pageTitle"/>
+          <div class="media" ref="media">
+            <media-embed v-for="url in pageMedia" :key="url" :url="url" class="mediaElement"/>
+          </div>
+        </div>
+        <div class="textContent">
+          <page-text v-if="pageData.content" :content="pageData.content" :page-id="pageData.pageId"/>
+          <page-navigation :this-page="store.currentPage" :next-pages="nextPagesArray" 
+          :previous-page-link="previousPageLink" :start-over-link="startOverLink" :story="story"
+          ref="pageNav" :class="{'hidden': hidePageNav}" />
+        </div>
       </div>
     </div>
-    <div class="textContent">
-      <page-text v-if="pageData.content" :content="pageData.content" :page-id="pageData.pageId"/>
-      <page-navigation :this-page="store.currentPage" :next-pages="nextPagesArray" 
-      :previous-page-link="previousPageLink" :start-over-link="startOverLink" :story="story"
-      ref="pageNav" :class="{'hidden': hidePageNav}" />
-    </div>
-    <div class="command">
-      <router-link :to="nextPageLink">{{ nextPageTitle }}</router-link>
-    </div>
-    <router-link :to="startOverLink">Start Over</router-link>
-    <router-link :to="previousPageLink">Go Back</router-link>
   </div>
   <div v-else>Loading...</div>
 </template>
@@ -180,4 +179,137 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 
+.pageBody {
+  color: var(--font-default);
+  background: var(--page-pageBody);
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1 0 auto;
+  flex-flow: column;
+  align-items: center;
+
+  > img {
+    align-self: center;
+  }
+
+  &.supercartridge {
+    .pageFrame {
+      padding-top: 0;
+      .pageContent {
+        max-width: 650px;
+      }
+    }
+  }
+
+  &.hscroll {
+    .pageFrame, .navBanner {
+      width: 1200px !important;
+
+      .pageContent {
+        max-width: 1100px;
+
+        .media {
+          align-items: flex-start !important;
+          overflow-x: scroll;
+          width: 1100px;  
+
+          &:after{
+            content: url(assets://scraps2/hscrollarrow.gif);
+          }
+        }   
+      }
+    }
+  }
+
+  &.scratchIntermission {
+    .navBanner {
+      width: 940px;
+    }
+    .pageFrame {
+      width: 940px;
+    }
+  }
+
+  //Small screen check
+  @media only screen and (max-width: 850px) {
+    &{
+      overflow-x: hidden;
+      height: max-content;
+      .navBanner {
+        max-width: 100%;
+      }
+      .pageFrame {
+        max-width: 100%;
+      }
+      :deep(div.footer) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .pageFrame {
+    background: var(--page-pageFrame);
+
+    width: 950px;
+    padding-top: 7px;
+    padding-bottom: 23px;
+    margin: 0 auto;
+    position: relative; // Allow things to align to the page
+
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+
+    .pageContent {
+      background: var(--page-pageContent);
+
+      max-width: 950px;
+      min-width: 650px;
+      display: flex;
+      flex: 0 1 auto;
+      align-items: center;
+      flex-flow: column;
+
+      .footnotesContainer {
+        width: 100%;
+      }
+
+      .mediaContent {
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+
+        h2.pageTitle {
+          max-width: 590px;
+          text-align: center;
+          line-height: 1.1;
+          font-size: 32px;
+          padding: 15px 0;
+        }
+
+        .media {
+          display: flex;
+          align-items: center;
+          flex-flow: column;
+
+          .panel {
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+          }            
+        }
+      }
+
+      .textContent{
+        margin-top: 30px;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        
+      }
+    }
+  }
+}
 </style>
