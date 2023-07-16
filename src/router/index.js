@@ -21,6 +21,11 @@ const routes = [
       return `/${to.params.story}/000001`;
     }
   },
+  // also redirect / to /hs until a main page actually exists
+  {
+    path: '/',
+    redirect: '/hs'
+  },
   { 
     path: '/:pathMatch(.*)*', 
     name: 'not-found', 
