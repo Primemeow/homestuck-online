@@ -55,15 +55,9 @@ export function resolveURL(url) {
   // The main logic. Takes an input url (that may be from old data) and
   // resolves it to... whatever url is appropriate. Resolves the assets protocol.
   let resource_url = getResourceURL(url)
-  console.debug("Got resource URL", resource_url)
-
   if (resource_url.startsWith("assets://")) {
-    console.debug("[resvUrl]", url, "to", resource_url, "to", resolveAssetsProtocol(resource_url))
     resource_url = resolveAssetsProtocol(resource_url)
-  } else {
-    console.debug("[resvUrl]", "no change for", resource_url)
   }
-
   return resource_url
 }
 

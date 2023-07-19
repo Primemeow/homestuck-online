@@ -1,5 +1,5 @@
 <template>
-    <div class="pageBody customStyles" :class="{pixelated: $localData.settings.pixelScaling}">
+    <div class="pageBody customStyles pixelated">
         <!-- TODO: add NavBanner later <NavBanner useCustomStyles="true" /> -->
         <div class="pageFrame">
         <slot v-if="noPageContent"></slot>
@@ -7,14 +7,14 @@
             <slot></slot>
         </div>
         </div>
-        <PageFooter />
+        <!-- <PageFooter /> -->
     </div>
 </template>
   
 <script setup>
     // this file is currently unused, I wrongly thought it was used in MspaPage
     // import NavBanner from './NavBanner.vue'
-    import PageFooter from './PageFooter.vue'
+    // import PageFooter from './PageFooter.vue'
 
     defineProps({
     noPageContent: Boolean
