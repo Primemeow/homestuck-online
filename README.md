@@ -1,6 +1,6 @@
 # Homestuck Online
 
-## THIS IS DEPRECATED BECAUSE OF THE HOMESTUCK COLLECTION'S NEW BROWSER MODULE
+## DEPRECATED: A HOMESTUCK COLLECTION BROWSER INTEGRATION NOW EXISTS, MAKING THIS USELESS
 
 A very barebones Homestuck reader, that uses Ruffle to play the original swfs. This is currently and will likely forever be missing a lot of features. There are no custom page styles, no headers, no links, etc. just a barebones Homestuck reader that works somewhat fine up to the Intermission when things get crazier. Probably not worth bothering with this. Still, a somewhat fun practice project.
 
