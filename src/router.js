@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MspaPage from '@/views/MspaPage.vue'
+import MspaLog from '@/views/MspaLog.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const routes = [
@@ -7,6 +8,12 @@ const routes = [
     path: '/:story/:page?',
     name: 'mspa-page',
     component: MspaPage,
+    props: true,
+  },
+  {
+    path: '/log/:story?',
+    name: 'mspa-log',
+    component: MspaLog,
     props: true,
   },
   // /story/ -> /story/{firstPage}, which varies per adventure

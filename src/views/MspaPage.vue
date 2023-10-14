@@ -5,7 +5,7 @@
         <div class="mediaContent">
           <h2 class="pageTitle" v-text="pageData.title" v-if="!isSupercartridge" ref="pageTitle"/>
           <div class="media" ref="media">
-            <media-embed v-for="url in pageMedia" :key="url" :url="url" class="mediaElement"/>
+            <media-embed v-for="url in pageMedia" :key="url" :url="url" class="panel"/>
           </div>
         </div>
         <div class="textContent">
@@ -35,9 +35,9 @@ const router = useRouter();
 
 const retcon6PasswordPages = ref(RETCON_6_PASSWORD_PAGES);
 
-let story = computed(() => route.params.story);
-let page = computed(() => route.params.page);
-let isLoading = computed(() => store.isLoading);
+const story = computed(() => route.params.story);
+const page = computed(() => route.params.page);
+const isLoading = computed(() => store.isLoading);
 
 const pageBodyClasses = computed(() => {
   const classes = [];
@@ -72,7 +72,6 @@ const nextPagesArray = computed(() => {
     if (!shouldRetcon('retcon6') && retcon6PasswordPages.value.includes(nextPageNumber)) return
     nextPages.push(store.mspaJson.story[nextPageNumber])
   })
-  console.log(nextPages);
   return nextPages;
 })
 
@@ -88,14 +87,6 @@ const startOverLink = computed(() => {
     return `/${story.value}/`;
   }
   return '#';
-})
-
-const nextPageTitle = computed(() => {
-  if (store.currentPage && store.currentPage.next && store.mspaJson && story.value) {
-    const nextPageNumber = store.currentPage.next[0];
-    return store.mspaJson.story[nextPageNumber]?.title || "Next";
-  }
-  return "Next";
 })
 
 const audioDataOverrides = computed(() => {
@@ -296,7 +287,7 @@ onMounted(() => {
 
           .panel {
             &:not(:last-child) {
-              margin-bottom: 20px;
+              margin-bottom: 15px;
             }
           }            
         }
